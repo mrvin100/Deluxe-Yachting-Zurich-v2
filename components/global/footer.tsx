@@ -63,10 +63,11 @@ export const Footer: FC = () => {
       <AppContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
         <div className="space-y-4">
           <Image
-            src={"/logo-f.png"}
+            src={"/wpc-logo.png"}
             height={150}
             width={150}
             alt="Footer Logo"
+            className="h-auto w-auto max-h-12 bg-white rounded-full"
           />
           <p className="font-[family-name:var(--font-roboto)] text-sm">
             Deluxe Yacthing Zurich, a WP theme equipped with the utmost

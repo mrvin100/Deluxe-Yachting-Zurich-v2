@@ -21,11 +21,11 @@ export const Header: FC = () => {
       <AppContainer className="flex gap-8 justify-between items-center py-6 md:px-8 max-w-full">
         <Link href={"/"}>
           <Image
-            src={"/logo-light.png"}
+            src={"/wpc-logo.png"}
             height={100}
             width={100}
             alt="logo image"
-            className="h-auto w-auto"
+            className="h-auto w-auto max-h-12 bg-white rounded-full"
           />
         </Link>
         <nav className="hidden md:min-w-[50vw] md:flex justify-between items-center gap-8">
