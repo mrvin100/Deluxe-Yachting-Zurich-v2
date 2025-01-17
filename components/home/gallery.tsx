@@ -8,8 +8,8 @@ interface Gallery {
   image?: string;
 }
 const list: Gallery[] = [
-  { image: "/images/list-img-2.jpg", title: "Le studio 45", subTitle: "Elegant Art Deco Salon Cruiser" },
-  { image: "/images/list-img-3.jpg", title: "Donna anna", subTitle: "Timeless Venetian Wooden Motoscafo" },
+  { image: "/images/list-img-2.webp", title: "Le studio 45", subTitle: "Elegant Art Deco Salon Cruiser" },
+  { image: "/images/list-img-3.webp", title: "Donna anna", subTitle: "Timeless Venetian Wooden Motoscafo" },
 ];
 export const Gallery: FC = () => {
   return (
