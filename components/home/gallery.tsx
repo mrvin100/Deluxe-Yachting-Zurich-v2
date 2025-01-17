@@ -8,14 +8,14 @@ interface Gallery {
   image?: string;
 }
 const list: Gallery[] = [
-  { image: "/images/list-img-2.jpg", title: "cometo yacht", subTitle: "123 $ / per day" },
-  { image: "/images/list-img-3.jpg", title: "videto yacht", subTitle: "123 $ / per day" },
+  { image: "/images/list-img-2.jpg", title: "Le studio 45", subTitle: "Elegant Art Deco Salon Cruiser" },
+  { image: "/images/list-img-3.jpg", title: "Donna anna", subTitle: "Timeless Venetian Wooden Motoscafo" },
 ];
 export const Gallery: FC = () => {
   return (
     <div>
       <AppContainer className="places-cover1">
-        <HeadingBox title="yacht rental since ‘81" subTitle="yacht type variety" description="Theme natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam rhoncus. Maecenas tempus, tellus eget…" />
+        <HeadingBox title="discover our fleet" subTitle="experience the style of a golden era" description="Step aboard our classic wooden and steel motor boats for bespoke cruises on Lake Zurich. Enjoy timeless elegance, exceptional service, and unforgettable experiences." />
         <Spacer small />
         <div className="flex justify-center items-center md:items-start flex-col md:flex-row gap-6">
           {list &&

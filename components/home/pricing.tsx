@@ -11,15 +11,15 @@ interface Price {
   isSelected?: boolean
 }
 const list: Price[] = [
-{ title: "standar", price: "1200", benefits: ["Lorem ipsum dolor sit amet, adipiscing elit ligula", "Lorem ipsum dolor sit amet, adipiscing elit ligula", "Lorem ipsum dolor sit amet, adipiscing elit ligula"] },
-  { title: "deluxe", price: "2300", isSelected: true, benefits: ["Lorem ipsum dolor sit amet, adipiscing elit ligula", "Lorem ipsum dolor sit amet, adipiscing elit ligula", "Lorem ipsum dolor sit amet, adipiscing elit ligula"] },
-  { title: "premium", price: "1600", benefits: ["Lorem ipsum dolor sit amet, adipiscing elit ligula", "Lorem ipsum dolor sit amet, adipiscing elit ligula", "Lorem ipsum dolor sit amet, adipiscing elit ligula"] },
+{ title: "cheese on the lake", price: "chf 149", benefits: ["Deluxe Fondue Cruise", "3-course menu by ChäsLaube Zurich", "Half bottle Swiss wine per person"] },
+  { title: "liquid spirit cruise", price: "chf 149", isSelected: true, benefits: ["Friday After Work Gin Tasting", "Flight of 5 selected gins", "Bar snacks and soft drinks"] },
+  { title: "fire in the sky", price: "chf 199", benefits: ["NYE Cruise with Fireworks", "Half bottle of champagne per person", "Bar snacks and refreshments"] },
 ];
 export const Pricing: FC = () => {
   return (
     <div>
       <AppContainer className="">
-        <HeadingBox subTitle="our latest offers" title="pricing table" description="Theme natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etia rmrhoncustema ecenas tempus, tellus eget..." />
+        <HeadingBox subTitle="our latest offers" title="exclusive events" description="Celebrate life’s finest moments with unforgettable experiences, from indulgent fondue nights to refined wine and cigar tastings, all set amidst the breathtaking beauty of Lake Zurich." />
         <Spacer small />
         <div className="grid justify-center md:grid-cols-3 gap-4 md:gap-8 ">
           {list &&
@@ -28,11 +28,11 @@ export const Pricing: FC = () => {
               <div key={box.title} className={cn("p-3 border w-full", box.isSelected && 'border-primary/70')}>
                 <div className="border border-primary/20 text-center space-y-4 md:space-y-6 p-4 sm:p-12 w-full">
                     <h4 className="font-[family-name:var(--font-cormorant-upright)] uppercase font-light font-comparant text-2xl">{box.title}</h4>
-                    <h3 className="font-[family-name:var(--font-cormorant-upright)] font-normal text-5xl"><sup className="font-light">$</sup>{box.price} <sub className="font-[family-name:Roboto] font-extralight text-sm block">/per month</sub></h3>
+                    <h3 className="font-[family-name:var(--font-cormorant-upright)] font-normal text-5xl"><sup className="font-light">$</sup><span className="uppercase">{box.price}</span><sub className="font-[family-name:Roboto] font-extralight text-sm block">/per month</sub></h3>
                     <ul className="text-sm max-w-52 mx-auto space-y-4">
                     {box.benefits?.map((benefit, index) => <li key={`${benefit}-${index}}`} className="font-[family-name:var(--font-roboto)] leading-6 tracking-widest">{benefit}</li>)}
                     </ul>
-                    <Link href={'#'} className="font-[family-name:var(--font-cormorant)] uppercase inline-block">view more <ArrowRight className="ml-2 inline-block h-4 w-4" /></Link>
+                    <Link href={'#'} className="font-[family-name:var(--font-cormorant)] uppercase inline-block">Get Event Ticket <ArrowRight className="ml-2 inline-block h-4 w-4" /></Link>
                 </div>
               </div>
             ))}

@@ -10,11 +10,11 @@ interface navItem {
 }
 export const Header: FC = () => {
   const navItems: navItem[] = [
-    { title: "home", link: "/home" },
-    { title: "page", link: "/page" },
-    { title: "tours", link: "/tours" },
-    { title: "blog", link: "/blog" },
-    { title: "shop", link: "/shop" },
+    { title: "our charter", link: "/charter" },
+    { title: "our events", link: "/events" },
+    { title: "water taxi", link: "/water-taxi" },
+    { title: "about us", link: "/about" },
+    { title: "get in touch", link: "/get-in-touch" },
   ];
   return (
     <header>

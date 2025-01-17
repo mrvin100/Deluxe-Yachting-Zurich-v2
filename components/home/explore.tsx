@@ -16,12 +16,12 @@ export const Explore: FC = () => {
           className="w-full min-h-[40vh] sm:max-h-96 h-full object-cover sm:object-contain md:object-cover"
         />
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full px-4 sm:max-w-xl lg:w-auto">
-          <HeadingBox title="exotic shore cruises" withDescription={false} withSubTitle={false} />
+          <HeadingBox title="explore the lake your way" withDescription={false} withSubTitle={false} />
           <div className="grid sm:grid-cols-2 gap-4 md:gap-8">
-            <Button className="py-6 px-8" variant={"outline"}>
-              EXPLORE
+            <Button className="py-6 px-8 uppercase tracking-widest" variant={"outline"}>
+              view services
             </Button>
-            <Button className="py-6 px-8 text-card-foreground">VIEW MORE</Button>
+            <Button className="py-6 px-8 text-card-foreground uppercase tracking-widest">book experience</Button>
           </div>
         </div>
       </AppContainer>

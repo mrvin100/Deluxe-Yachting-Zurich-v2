@@ -8,19 +8,19 @@ export const Counters: FC = () => {
    const [counters] = useState<{ value: number; description: string }[]>([
       {
          value: 237,
-         description: 'penatibus et magnis',
+         description: 'events hosted',
       },
       {
          value: 561,
-         description: 'leo eget bibendum',
+         description: 'guests served',
       },
       {
          value: 123,
-         description: 'pretium quis sem',
+         description: 'private tours',
       },
       {
          value: 307,
-         description: 'Donec sodales sagittis',
+         description: 'sunny days on lake',
       },
    ])
 

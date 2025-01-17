@@ -27,10 +27,10 @@ import { FC } from "react"
 
 const FormSchema = z.object({
   doci: z.date({
-    required_error: "A date of check-in is required.",
+    required_error: "An event is required.",
   }),
   doco: z.date({
-    required_error: "A date of check-out is required.",
+    required_error: "A date of event is required.",
   }),
 })
 
@@ -50,7 +50,6 @@ export const CalendarForm:FC = () => {
   }
   const day = new Date()
   const currentDate = `${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`
-  console.log("currentDate : ", currentDate);
   
 
   return (
@@ -60,8 +59,49 @@ export const CalendarForm:FC = () => {
           control={form.control}
           name="doci"
           render={({ field }) => (
-            <FormItem className="inline-flex flex-col">
-              <FormLabel className="uppercase text-xs font-light">Check-in</FormLabel>
+            <FormItem className="inline-grid">
+              <FormLabel className="uppercase text-xs font-light">choose an event</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        " pl-3 text-left font-normal py-7 text-xs",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Pick an event</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value ?? currentDate}
+                    onSelect={field.onChange}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("1900-01-01")
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="doco"
+          render={({ field }) => (
+            <FormItem className="inline-grid">
+              <FormLabel className="uppercase text-xs font-light">date</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -101,48 +141,7 @@ export const CalendarForm:FC = () => {
           control={form.control}
           name="doco"
           render={({ field }) => (
-            <FormItem className="inline-flex flex-col">
-              <FormLabel className="uppercase text-xs font-light">Check-out</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        " pl-3 text-left font-normal py-7 text-xs",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value ?? currentDate}
-                    onSelect={field.onChange}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01")
-                    }
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="doco"
-          render={({ field }) => (
-            <FormItem className="inline-flex flex-col">
+            <FormItem className="inline-grid">
               <FormLabel className="uppercase text-xs font-light">Guests:</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
@@ -157,7 +156,7 @@ export const CalendarForm:FC = () => {
                       {field.value ? (
                         format(field.value, "PPP")
                       ) : (
-                        <span>Pick a date</span>
+                        <span>Pick N° of Guests</span>
                       )}
                       <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                     </Button>
