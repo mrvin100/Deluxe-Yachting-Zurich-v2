@@ -29,17 +29,26 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 
 const FormSchema = z.object({
-  doci: z.string({
+  event: z.string({
     required_error: "An event is required.",
   }),
-  doco: z.date({
+  date: z.date({
     required_error: "A date of event is required.",
   }),
+  guests: z.string({
+    required_error: "A guest number is required.",
+  }),
 });
+
+enum Events {
+  CHEESE_ON_THE_LAKE =  "Cheese on the Lake",
+  LIQUID_SPIRIT_CRUISE = "Liquid Spirit Cruise" ,
+  FUME_ON_THE_LAKE = "Fume on the Lake",
+  FIRE_IN_THE_SKY = "Fire in the Sky" ,
+}
 
 export const CalendarForm: FC = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -55,10 +64,6 @@ export const CalendarForm: FC = () => {
       ),
     });
   }
-  const day = new Date();
-  const currentDate = `${day.getFullYear()}-${
-    day.getMonth() + 1
-  }-${day.getDate()}`;
 
   return (
     <Form {...form}>
@@ -68,7 +73,7 @@ export const CalendarForm: FC = () => {
       >
         <FormField
           control={form.control}
-          name="doci"
+          name="event"
           render={({ field }) => (
             <FormItem className="inline-grid">
               <FormLabel className="uppercase text-xs font-light">
@@ -76,28 +81,25 @@ export const CalendarForm: FC = () => {
               </FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
-                    {/* <Button
-                      variant={"outline"}
-                      className={cn(
-                        " pl-3 text-left font-normal py-7 text-xs",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick an event</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button> */}
-                    <SelectValue placeholder="Select a verified email to display" />
+                  <SelectTrigger
+                    className={cn(
+                      " pl-3 text-left font-normal py-7 text-xs",
+                      !field.value && "text-muted-foreground"
+                    )}
+                    value={''}
+                  >
+                    {field.value ? (
+                      field.value
+                    ) : (
+                      <span>Pick an event</span>
+                    )}
+                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
-                  <SelectItem value="m@google.com">m@google.com</SelectItem>
-                  <SelectItem value="m@support.com">m@support.com</SelectItem>
+                  {[Events.CHEESE_ON_THE_LAKE, Events.FIRE_IN_THE_SKY, Events.FUME_ON_THE_LAKE, Events.LIQUID_SPIRIT_CRUISE].map((event, i) => (
+                  <SelectItem key={i} value={event}>{event}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -106,7 +108,7 @@ export const CalendarForm: FC = () => {
         />
         <FormField
           control={form.control}
-          name="doco"
+          name="date"
           render={({ field }) => (
             <FormItem className="inline-grid">
               <FormLabel className="uppercase text-xs font-light">
@@ -134,7 +136,7 @@ export const CalendarForm: FC = () => {
                 <PopoverContent className="w-auto p-0" align="start">
                   <Calendar
                     mode="single"
-                    selected={field.value ?? currentDate}
+                    selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
                       date > new Date() || date < new Date("1900-01-01")
@@ -149,43 +151,35 @@ export const CalendarForm: FC = () => {
         />
         <FormField
           control={form.control}
-          name="doco"
+          name="guests"
           render={({ field }) => (
             <FormItem className="inline-grid">
               <FormLabel className="uppercase text-xs font-light">
                 Guests:
               </FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        " pl-3 text-left font-normal py-7 text-xs",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick N° of Guests</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value ?? currentDate}
-                    onSelect={field.onChange}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01")
-                    }
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger
+                    className={cn(
+                      " pl-3 text-left font-normal py-7 text-xs",
+                      !field.value && "text-muted-foreground"
+                    )}
+                    value={"1"}
+                  >
+                    {field.value ? (
+                      field.value
+                    ) : (
+                      <span>Pick N° of Guests</span>
+                    )}
+                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {[...Array(20)].map((_nbr_guest, i_nbr_guest) => (
+                  <SelectItem key={i_nbr_guest + 1} value={`${i_nbr_guest + 1}`}>{`${i_nbr_guest + 1}`}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
