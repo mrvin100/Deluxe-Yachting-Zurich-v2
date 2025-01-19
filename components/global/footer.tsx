@@ -3,7 +3,6 @@ import { AppContainer } from "./app-container";
 import Image from "next/image";
 import {
   Facebook,
-  Github,
   Instagram,
   LucideIcon,
   Mail,
