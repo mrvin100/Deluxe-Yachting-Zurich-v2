@@ -6,8 +6,8 @@ import {
   Github,
   Instagram,
   LucideIcon,
-  Twitter,
-  Youtube,
+  Mail,
+  MessageCircleIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { FooterNewsLetter } from "./footer-newsletter";
@@ -19,11 +19,10 @@ interface SocialsNetwork {
 }
 
 const socialNetworks: SocialsNetwork[] = [
-  { icon: Facebook, link: "/" },
-  { icon: Twitter, link: "/" },
-  { icon: Github, link: "/" },
-  { icon: Instagram, link: "/" },
-  { icon: Youtube, link: "/" },
+  { icon: Facebook, link: "https://facebook.com/wp.cruises" },
+  { icon: Mail, link: "mailto:info@wp.cruises" },
+  { icon: MessageCircleIcon, link: "https://web.whatsapp.com/send?phone=+41795024040" },
+  { icon: Instagram, link: "https://instagram.com/white.pearl.cruises" },
 ];
 
 interface FooterGroup {
@@ -82,6 +81,7 @@ export const Footer: FC = () => {
                   href={socialNetwork.link}
                   key={`${socialNetwork.icon}`}
                   className="inline-block mr-3 hover:text-muted-foreground"
+                  target="_blank"
                 >
                   <socialNetwork.icon />
                 </Link>

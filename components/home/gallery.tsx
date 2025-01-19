@@ -27,7 +27,7 @@ export const Gallery: FC = () => {
                   height={800}
                   width={800}
                   alt="Brand image"
-                  className="mx-auto h-80 w-full object-cover"
+                  className="mx-auto h-auto max-h-44 sm:max-h-full sm:h-80 w-full object-cover"
                 />
                 <HeadingBox withDescription={false} subTitle={box.subTitle} title={box.title} subTitleStyle="normal-case" titleStyle="text-xl" />
               </div>
