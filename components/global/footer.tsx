@@ -46,7 +46,7 @@ const footerGroups: FooterGroup[] = [
   {
     title: "Contact Details",
     items: [
-      { title: "+31 555 777 83", link: "tel:+31 555 777 83" },
+      { title: "+41 795 024 040", link: "tel:+41795024040" },
       { title: "Customer Testimonials" },
       { title: "Latest Weather Reports" },
       { title: "All Inclusive Day Trips" },
