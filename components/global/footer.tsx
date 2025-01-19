@@ -70,8 +70,9 @@ export const Footer: FC = () => {
             className="h-auto w-auto max-h-12 bg-white rounded-full"
           />
           <p className="font-[family-name:var(--font-roboto)] text-sm">
-            Deluxe Yacthing Zurich, a WP theme equipped with the utmost
-            practical features for your yacht & boat rental business.
+            White Pearl Cruises - Luxury Yacht Charters on Lake Zurich Offering
+            unforgettable experiences for private events, corporate gatherings,
+            and serene lake escapes.
           </p>
           <div className="space-y-3">
             {socialNetworks &&
