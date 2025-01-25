@@ -12,7 +12,7 @@ export const Banner: FC = () => {
           poster="/video-boat_3_layer.jpeg"
           autoPlay
         >
-          <source src={"/video-boat.mov"} type="video/mp4" />
+          <source src={"/video-boat.mp4"} type="video/mp4" />
           Your browser does not support the video tag
         </video>
         <div className="absolute bottom-[10%] left-[5%] sm:left-[7%] px-4 sm:w-auto bg-muted/5">
